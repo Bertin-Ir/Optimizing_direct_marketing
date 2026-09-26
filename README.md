@@ -1,6 +1,6 @@
 # Optimizing Direct Bank Marketing
 
-**Live demo:** [Follow-up prioritization app](YOUR_APP_LINK)
+**Live demo:** [Follow-up prioritization app](https://optimizingdirectmarketing-hv4xi3q2yoig9wrdh3mnay.streamlit.app/)
 
 ## Overview
 Banks invest significant resources in direct marketing campaigns, yet most outreach fails to convert. This project applies
