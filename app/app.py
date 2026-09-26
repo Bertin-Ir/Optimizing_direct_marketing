@@ -58,15 +58,23 @@ def predict(df: pd.DataFrame) -> pd.Series:
     return pd.Series(model.predict_proba(prepare_features(df))[:, 1], index=df.index)
 
 
-st.title("Which clients should the bank follow up with?")
+st.title("Optimizing Direct Bank Marketing")
 st.write(
-    "After a first call, predicts whether the client will subscribe to a term deposit, "
-    "so the team can focus follow-up calls on the most promising clients. "
-    f"On average, {BASE_RATE:.1%} of contacted clients subscribe."
+    "Banks sell term deposits (savings locked in for a fixed period) through phone campaigns, "
+    f"but most calls fail: only {BASE_RATE:.1%} of contacted clients subscribe. "
+    "Calling everyone back wastes staff time and annoys clients who are not interested. "
+    "This project uses machine learning on 45,211 real campaign calls to help the bank "
+    "focus its effort on the clients most likely to say yes."
+)
+
+st.header("Which clients should the bank follow up with?")
+st.write(
+    "After a first call, the model predicts whether the client will subscribe, "
+    "so the team can spend its follow-up calls on the most promising clients."
 )
 
 tab_single, tab_batch, tab_threshold, tab_about = st.tabs(
-    ["Score a completed call", "Rank called clients", "Pick a cut-off", "About the model"]
+    ["Score a completed call", "Pick a cut-off", "Rank called clients", "About the model"]
 )
 
 # ---------------------------------------------------------------- single client
@@ -120,8 +128,8 @@ with tab_single:
         m0.metric("Prediction", "Will subscribe" if p >= CUTOFF else "Will not subscribe")
         m1.metric("Subscription score", f"{p:.2f}")
         st.caption(
-            f"Clients scoring {CUTOFF:.2f} or higher are predicted to subscribe. The score ranks "
-            "clients; because training balanced the classes, it overstates the true chance of subscribing."
+            f"Clients scoring {CUTOFF:.2f} or higher are predicted to subscribe."
+            
         )
         if p >= 0.8:
             st.success("Strong follow-up candidate. Prioritize a callback.")
@@ -222,11 +230,11 @@ with tab_about:
         "0.93, which would overstate how well the model works before a call."
     )
     st.markdown(f"""
-**Data.** UCI Bank Marketing dataset: 45,211 phone-campaign contacts from a Portuguese bank (Moro, Cortez & Rita, 2014), licensed CC BY 4.0.
+**Data.** UCI Bank Marketing dataset: 45,211 phone-campaign contacts from a Portuguese bank [Moro et al., 2011].
 
 **Model.** XGBoost with SMOTE oversampling, trained on {len(info['model_features'])} features selected by variance
 threshold. Features, preprocessing, and hyperparameters come from the model comparison in the project notebooks.
-On {9043:,} held-out clients: ROC-AUC {info['roc_auc']:.2f}, precision {info['precision']:.0%}, recall {info['recall']:.0%}
+On {9043:,} held-out clients (test data): ROC-AUC {info['roc_auc']:.2f}, precision {info['precision']:.0%}, recall {info['recall']:.0%}
 at a cut-off of {CUTOFF:.2f}.
 
 {duration_note}
