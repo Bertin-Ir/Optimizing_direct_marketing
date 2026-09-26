@@ -70,7 +70,7 @@ The remaining 80% of the list can be deprioritized, saving most of the calling e
 
 ## Live App: Follow-up Prioritization
 
-**[Open the app](YOUR_APP_LINK)**
+**[Open the app](https://optimizingdirectmarketing-hv4xi3q2yoig9wrdh3mnay.streamlit.app/)**
 
 ### What question does it answer?
 > *"After a first call with a client, how likely is that client to subscribe, and who should the team call back first?"*
