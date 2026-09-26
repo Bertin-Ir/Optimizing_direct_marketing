@@ -124,6 +124,8 @@ streamlit run app/app.py
 ---
 
 ## Data
+UCI Bank Marketing dataset: 45,211 phone-campaign contacts from a Portuguese bank, 2008–2010
+
 [Moro et al., 2011] S. Moro, R. Laureano and P. Cortez. Using Data Mining for Bank Direct Marketing: An Application of the CRISP-DM Methodology.
 In P. Novais et al. (Eds.), Proceedings of the European Simulation and Modelling Conference - ESM'2011, pp. 117-121, Guimarães, Portugal, October, 2011. EUROSIS.
 
