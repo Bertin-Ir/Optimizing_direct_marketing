@@ -74,7 +74,7 @@ st.write(
 )
 
 tab_single, tab_batch, tab_threshold, tab_about = st.tabs(
-    ["Score a completed call", "Pick a cut-off", "Rank called clients", "About the model"]
+    ["Score a completed call", "Rank called clients", "Pick a cut-off", "About the model"]
 )
 
 # ---------------------------------------------------------------- single client
