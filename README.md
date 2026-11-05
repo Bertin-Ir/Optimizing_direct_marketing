@@ -131,14 +131,5 @@ In P. Novais et al. (Eds.), Proceedings of the European Simulation and Modelling
 
 ---
 
-## Keep-alive
-
-Free Streamlit Community Cloud apps hibernate after ~12 hours without visitors. The workflow `.github/workflows/keep-alive.yml` runs every 6 hours, opens the app in a real headless Chromium browser (plain HTTP pings don't count as traffic), and clicks "Yes, get this app back up!" if the app is asleep. The run fails (and GitHub emails the owner) if the app can't be loaded; a screenshot is attached as an artifact. Playwright is installed only inside the workflow, and the workflow never commits.
-
-- **Change the URL:** `gh variable set STREAMLIT_APP_URL --body "https://your-app.streamlit.app/"` (comma-separate several URLs), or edit it under Settings → Secrets and variables → Actions → Variables.
-- **Run manually:** `gh workflow run keep-alive.yml`, then `gh run watch` (or Actions tab → keep-alive → Run workflow).
-
----
-
 ## Author
 **Bertin Iradukunda**
